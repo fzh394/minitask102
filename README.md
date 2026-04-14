@@ -58,7 +58,7 @@ The main steps are:
 
 ## 5. Repository Contents
 
-* `ACC102 mini task.ipynb` — main analysis notebook
+* `Financial Comparison notebook.ipynb` — main analysis notebook
 * `figures/` — exported charts used in the project
 * `README.md` — project overview and explanation
 
