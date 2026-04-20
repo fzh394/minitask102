@@ -78,7 +78,7 @@ Run the notebook cells in order. The notebook connects to WRDS, retrieves the da
 
 ## 7. Demo
 
-A short demo video is included in the final submission package and can also be linked here if needed.
+A short demo video is included in the final submission package and can also be linked here if needed.【mini task-哔哩哔哩】 https://b23.tv/n6jWPIk
 
 ## 8. Limitations and Next Steps
 
