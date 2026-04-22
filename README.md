@@ -4,32 +4,35 @@
 
 This project compares the financial performance of Coca-Cola and PepsiCo from 2020 to 2025.
 
-The main objective is to evaluate which company performs better in terms of profitability and financial stability. The target users are business students and beginner investors who want to understand how accounting data and financial ratios can be used to compare company performance.
+The main objective is to evaluate which company performs better in terms of profitability and financial stability.  
+The target users are business students and beginner investors who want to understand how accounting data and financial ratios can be used to compare company performance.
 
 ## 2. Data
 
-The dataset used in this project was retrieved from WRDS through the `comp.funda` table.
+The dataset used in this project was retrieved from WRDS through the `comp.funda` table, with additional industry classification information linked from `comp.company`.
 
 The analysis focuses on two companies:
 
-* Coca-Cola (`KO`)
-* PepsiCo (`PEP`)
+- Coca-Cola (`KO`)
+- PepsiCo (`PEP`)
 
 The sample period covers fiscal years 2020 to 2025.
 
 The main variables used are:
 
-* `fyear`: fiscal year
-* `sale`: revenue
-* `ni`: net income
-* `at`: total assets
-* `lt`: total liabilities
-* `act`: current assets
-* `lct`: current liabilities
+- `fyear`: fiscal year
+- `sale`: revenue
+- `ni`: net income
+- `at`: total assets
+- `lt`: total liabilities
+- `act`: current assets
+- `lct`: current liabilities
 
-These variables are used to calculate net profit margin, current ratio, and debt ratio.
+These variables are used to calculate net profit margin, current ratio, debt ratio, and return on assets (ROA).
 
-**Data access date:** 14 April 2026
+An industry benchmark is also constructed using firms in the same broad two-digit SIC industry group.
+
+**Data access date:** 22 April 2026
 
 ## 3. Methods
 
@@ -37,44 +40,50 @@ This project uses Python, WRDS, SQL, pandas, and matplotlib.
 
 The main steps are:
 
-1. Connect to WRDS using the `wrds` package.
-2. Retrieve company-level accounting data from `comp.funda` with SQL queries.
-3. Combine Coca-Cola and PepsiCo data into one pandas DataFrame.
+1. Connect to WRDS using Python.
+2. Retrieve company-level accounting data for Coca-Cola and PepsiCo with SQL queries.
+3. Combine the two company datasets into one pandas DataFrame.
 4. Clean duplicate or incomplete observations.
-5. Calculate three financial ratios:
+5. Calculate four financial ratios:
+   - Net Profit Margin = Net Income / Revenue
+   - Current Ratio = Current Assets / Current Liabilities
+   - Debt Ratio = Total Liabilities / Total Assets
+   - ROA = Net Income / Total Assets
+6. Build an industry benchmark using firms in the same broad SIC industry group.
+7. Create comparison charts for revenue, net income, profitability, liquidity, leverage, and ROA.
 
-   * Net Profit Margin = Net Income / Revenue
-   * Current Ratio = Current Assets / Current Liabilities
-   * Debt Ratio = Total Liabilities / Total Assets
-6. Create line charts to compare the two companies over time.
+A reusable function is also included so that the workflow can be adapted for comparing other listed companies.
 
 ## 4. Key Findings
 
-* PepsiCo consistently generated higher revenue than Coca-Cola from 2020 to 2025, suggesting a larger business scale.
-* Coca-Cola reported a higher net profit margin across most of the sample period, indicating stronger profitability.
-* Coca-Cola generally showed a higher current ratio, suggesting a stronger short-term liquidity position.
-* PepsiCo reported a higher debt ratio in most years, indicating heavier reliance on liabilities.
-* Overall, PepsiCo appears stronger in scale, while Coca-Cola appears stronger in profitability and financial stability.
+- PepsiCo consistently generated higher revenue than Coca-Cola from 2020 to 2025, indicating a larger business scale.
+- Coca-Cola reported a higher net profit margin than PepsiCo in most years and remained above the industry average in profitability.
+- Coca-Cola also reported a higher ROA than PepsiCo and the industry average in most years, suggesting stronger asset efficiency.
+- Coca-Cola generally showed a stronger current ratio than PepsiCo, although both companies were below the broader industry benchmark in liquidity.
+- PepsiCo reported a higher debt ratio than Coca-Cola in most years, and both companies were more leveraged than the industry average.
+- Overall, PepsiCo appears stronger in scale, while Coca-Cola appears stronger in profitability and relatively stronger in financial stability.
 
 ## 5. Repository Contents
 
-* `Financial Comparison notebook.ipynb` — main analysis notebook
-* `figures/` — exported charts used in the project
-* `README.md` — project overview and explanation
+- `Financial Comparison.ipynb` — main analysis notebook
+- `figures/` — exported charts used in the project
+- `README.md` — project overview and explanation
 
 ## 6. How to Run
 
 To run this notebook, you need:
 
-* Python
-* Jupyter Notebook
-* `wrds`
-* `pandas`
-* `matplotlib`
+- Python
+- Jupyter Notebook
+- `wrds`
+- `pandas`
+- `matplotlib`
+- `numpy`
 
-A valid WRDS account and internet connection are required for first-time access.
+You also need a valid WRDS account to access the data.
 
-Run the notebook cells in order. The notebook connects to WRDS, retrieves the data, performs data cleaning, calculates ratios, and generates the charts.
+Run the notebook cells in order.  
+The notebook connects to WRDS, retrieves accounting data, performs data cleaning, calculates ratios, builds an industry benchmark, and generates the charts.
 
 ## 7. Demo
 
@@ -90,9 +99,12 @@ Second, the analysis focuses on a limited set of accounting variables and ratios
 
 Third, the project is descriptive and does not include forecasting or valuation analysis.
 
+In addition, the industry benchmark is based on a broad two-digit SIC industry grouping, so it may not fully capture all competitive differences within the market.
+
 Possible improvements for future work include:
 
-* adding more financial ratios
-* extending the time period
-* including more peer companies for industry comparison
-* adding a simple valuation or forecasting component
+- adding more financial ratios
+- extending the time period
+- including more peer companies for industry comparison
+- adding a simple valuation or forecasting component
+- turning the notebook into a more general company comparison template
