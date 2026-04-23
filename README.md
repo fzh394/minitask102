@@ -87,8 +87,7 @@ The notebook connects to WRDS, retrieves accounting data, performs data cleaning
 
 ## 7. Demo
 
-A short demo video is included in the final submission package and can also be linked here if needed.(https://video.xjtlu.edu.cn/Mediasite/Channel/50381bcaa0e74d9582215a01776a3d8d5f/headless/watch/c6a312e66424419ab648bfda207a49fc1d)
-
+A short demo video is included in the final submission package and can also be linked here if needed.(https://video.xjtlu.edu.cn/Mediasite/Channel/50381bcaa0e74d9582215a01776a3d8d5f/headless/watch/b53c612f1b7b4f42bb77cb5cbe8d09741d)
 ## 8. Limitations and Next Steps
 
 This project has several limitations.
